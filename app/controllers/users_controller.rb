@@ -19,12 +19,16 @@ class UsersController < ApplicationController
 		render json: @user
 	end
 
+	def edit
+		@user = User.find(params[:id]) 
+	end
+
 	def update
 		@user = User.find(params[:id])
 		if @user.update(user_params)
 			render json: @user
 		else
-			render json: @user.error, status: :unprocessable_entity
+			#render json: @user.error, status: :unprocessable_entity
 		end
 	end
 
